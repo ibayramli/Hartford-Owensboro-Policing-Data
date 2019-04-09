@@ -1,0 +1,35 @@
+---
+title: "ps_5_graphic.Rmd"
+author: "Ilkin Bayramli"
+date: "March 5, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
+
+library(tidyverse)
+library(dplyr)
+library(lubridate)
+library(janitor)
+library(fs)
+library(stringr)
+library(gt)
+library(scales)
+
+read_rds("question_4") %>%
+  ggplot(aes(date, amount)) +
+  geom_col(aes(fill = party)) +
+  scale_y_log10() +
+  labs(title = "Total Amount of Donations by Harvard Professory by Parties", 
+       caption = "SOURCE: Federal Election Commission") +
+  ylab("Contribution Amount") +
+       xlab("Date")
+
+
+```
+
+
